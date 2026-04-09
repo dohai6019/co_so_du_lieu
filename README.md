@@ -7,14 +7,30 @@
    Link tải: https://www.microsoft.com/vi-vn/sql-server/sql-server-downloads 
 
    Chọn phiên bản *SQL Server 2025 Developer*
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3d00eae9-794f-4f25-8a06-dd5cc173611e" />
+
+Chọn Download Media
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9d8b86d6-e993-4113-ba74-cf8b0d735c88" />
+
+Chọn Download khi đó sẽ hiện một ổ đĩa như sau:
+<img width="755" height="29" alt="image" src="https://github.com/user-attachments/assets/dbdf07c8-80a3-4381-9874-504c43c9ed24" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/38033b3a-dc33-4e82-af42-823ce60fb5ab" />
+
+Chọn setup để cài đặt:
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e47a76a8-117a-4abd-96cf-21746d81ac8d" />
+
+Chọn Installation và Chọn "New SQL ..."
 
    Không chọn Azure (nặng, ko dùng đến), các tính năng mở rộng khác (feature) chọn tất cả   
+<img width="1006" height="885" alt="image" src="https://github.com/user-attachments/assets/7c3794ba-ba35-4be4-b0ec-c013467d9183" />
+
+<img width="1006" height="885" alt="image" src="https://github.com/user-attachments/assets/b1124056-5ca5-4319-8f46-0a767c9b4c16" />
 
    Cài đặt với 2 kiểu login (Mixed Mode): Windows Authentication (nhớ **Add Current User**) và SQL Server Authentication (username mặc định là **sa**, chỉ cần nhập mật khẩu **123** , nhớ nhập 2 chỗ: Enter password và Confirm password)
-
+<img width="1006" height="885" alt="image" src="https://github.com/user-attachments/assets/1d130c3b-45b7-49c9-bf55-10a630009867" />
 
 Đã cài đặt với 2 kiểu login
-
 
 2. Cấu hình cho SQL Server làm việc ở cổng động (Dynamic Port), TCP: enable+active yes cho 127.0.0.1, chọn cổng động là 3xxxx với xxxx là **4 số cuối của mã số sv**, (nếu cổng này đã mở sẵn trước đó bởi 1 ứng dụng khác thì chọn cổng là 4xxxx hoặc 5xxxx)
 <img width="515" height="630" alt="image" src="https://github.com/user-attachments/assets/334fcfc6-4b61-45a6-a110-bda4136dc80a" />
