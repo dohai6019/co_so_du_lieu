@@ -33,7 +33,7 @@ Chọn Installation và Chọn "New SQL ..."
 Đã cài đặt với 2 kiểu login
 
 2. Cấu hình cho SQL Server làm việc ở cổng động (Dynamic Port), TCP: enable+active yes cho 127.0.0.1, chọn cổng động là 3xxxx với xxxx là **4 số cuối của mã số sv**, (nếu cổng này đã mở sẵn trước đó bởi 1 ứng dụng khác thì chọn cổng là 4xxxx hoặc 5xxxx)
-<img width="515" height="630" alt="image" src="https://github.com/user-attachments/assets/334fcfc6-4b61-45a6-a110-bda4136dc80a" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/bcc818c8-6d6f-4a12-a8e4-4737f66402ad" />
 
 3. Kiểm tra xem service SQL Server có đang running và mở đúng cổng đã chọn hay không?
 
@@ -71,9 +71,7 @@ Sử dụng code để import dữ liệu
 <img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/35f4583d-3cdb-4381-9b94-d2349dfe8332" />
 
 11. Trong cửa sổ mới để gõ lệnh: Gõ lệnh để cập nhật(update) trường noisinh thành 'Sao Hoả' cho những dòng có noisinh và diachi đều là NULL.
-<img width="285" height="94" alt="image" src="https://github.com/user-attachments/assets/459632d9-1dab-4829-965e-5172e784af01" />
-
-<img width="809" height="668" alt="image" src="https://github.com/user-attachments/assets/d364d2a7-a314-45ed-8005-bb5173b8f874" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/79088f16-c3bf-43e0-b1df-03c3a1b3d2fb" />
 
 12. Sử dụng giao diện đồ hoạ của ssms: Tạo bảng **SaoHoa** gồm những sinh viên có nơi sinh ở 'Sao Hoả', keyword gợi ý: sử dụng 1 câu lệnh: SELECT + INTO
 <img width="320" height="97" alt="image" src="https://github.com/user-attachments/assets/9d1817db-cec2-4833-9144-c0b223718822" />
@@ -87,6 +85,14 @@ Câu lệnh: DELETE FROM SaoHoa WHERE hotensv LIKE N'Đỗ%';
 <img width="1920" height="1080" alt="Screenshot 2026-04-09 062844" src="https://github.com/user-attachments/assets/0c74521c-8213-4c6c-9ea7-fc2f343f5952" />
 
 14. Sử dụng giao diện đồ hoạ của ssms: Xuất toàn bộ kết quả của các bước 6,7,8,9,10,11,12,13 ra file **dulieu.sql** , keyword gợi ý: sử dụng tính năng GEN SCRIPT struct+data cho database
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/02466f67-160d-47b8-bf2e-a7acbdb3afc1" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c724c25a-85a8-4f1a-81c3-fdd17ce88ca8" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/50a86f0d-fd71-4d40-9280-9a66856ccd11" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d7bdf0b1-c5ab-45d1-8580-0aafbd72995e" />
+
 <img width="952" height="826" alt="Screenshot 2026-04-09 063114" src="https://github.com/user-attachments/assets/1d21ff58-8ae8-4d1b-a383-78aea58f3a3d" />
 
 Đã xuất thành công
