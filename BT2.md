@@ -116,4 +116,280 @@ DATE cho ngày sinh
 
 <img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/30e82b01-ec8b-4d97-a28c-d7063198c106" />
 
+### Phần 2: Xây dựng Function (Kiến thức 8, 9) 
 
+#Một vài function mà em tìm hiểu được:
+
+String functions: xử lý chuỗi
+
+<img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/3bb8ff4a-9d95-42fe-814d-76c76deebc40" />
+
+Date/Time functions: xử lý ngày giờ
+
+<img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/866cf55b-0c2f-4e1a-9516-4798a2b6632f" />
+
+#Viết 01 Scalar Function (Hàm trả về một giá trị): Đưa ra 1 logic cho cơ sở dữ liệu của em, mà cần dùng đến function này. 
+
+Function tính số ngày mượn sách thực tế:
+
+Nếu chưa trả (NgayTra = NULL) → tính đến ngày hiện tại
+
+Nếu đã trả → tính từ NgayMuon → NgayTra
+
+<img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/c75498f1-fb45-452a-8936-723561c19db6" />
+
+kết quả
+<img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/cdb7678e-879a-4055-ba5d-f8e30da047ae" />
+
+#Viết 01 Inline Table-Valued Function: Trả về danh sách các bản ghi theo một điều kiện lọc cụ thể
+
+Lấy danh sách các phiếu mượn của một độc giả cụ thể:
+
+Nhập vào: MaDocGia
+
+Trả về: danh sách các phiếu mượn của người đó
+
+<img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/3e57477f-3260-4c7a-a2df-a5aed1c21fdb" />
+
+#Viết 01 Multi-statement Table-Valued Function: Thực hiện xử lý logic phức tạp bên trong (có sử dụng biến bảng) trước khi trả về kết quả.
+
+Lấy danh sách phiếu mượn + phân loại trạng thái
+
+<img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/94973603-5dd8-4166-8c6d-8692c5df2a0e" />
+
+Đây là Multi-statement Table-Valued Function vì:
+
+Có BEGIN...END
+
+Có biến bảng @Result
+
+Có nhiều bước xử lý logic (CASE, tính toán)
+
+Xử lý:
+
+Tính số ngày mượn
+
+Phân loại trạng thái
+
+Tính tiền phạt
+
+### Phần 3: Xây dựng Store Procedure (Kiến thức 10) 
+
+#Một số System SP tiêu biểu:
+
+1. sp_help
+
+   <img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/406c4c6b-3340-4a01-8eb4-ec50deb618a8" />
+
+Hiển thị:
+
+Danh sách cột
+
+Kiểu dữ liệu
+
+Khóa chính (PK)
+
+Ràng buộc
+
+2. sp_helptext
+
+   <img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/e4fa87ee-0bb5-4cce-96ee-039a7a9f3f8e" />
+
+Hiển thị toàn bộ code đã viết
+
+Dùng khi:
+
+Quên code
+
+Muốn kiểm tra lại logic   
+
+#Viết 01 Store Procedure đơn giản để thực hiện lệnh INSERT hoặc UPDATE dữ liệu, có kiểm tra điều kiện logic 
+
+Thêm sách "Mạng máy tính"
+
+<img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/17ef935f-1683-4f6d-92ae-9141b9d0e9ad" />
+
+sách đã bị trùng
+
+<img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/94143df9-7651-4e9c-898c-5f0a46a81a09" />
+
+Danh sách đã được thêm
+
+<img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/1c5877e0-86fd-4e6a-8731-3a637ba0705f" />
+
+#Viết 01 Store Procedure có sử dụng tham số OUTPUT để trả về một giá trị tính toán 
+
+Tính tổng tiền phạt của một độc giả:
+
+<img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/3f7fd2a4-29a3-43ce-9136-e5d703a4f346" />
+
+Store Procedure có tham số:
+
+Input: @MaDocGia
+
+Output: @TongTienPhat
+
+Dùng OUTPUT để:
+
+Trả về giá trị tính toán ra ngoài
+
+Có sử dụng:
+
+SUM
+
+CASE
+
+DATEDIFF
+
+#Viết 01 Store Procedure trả về một tập kết quả (Result set) từ lệnh SELECT sau khi đã join nhiều bảng.
+
+Hiển thị danh sách mượn sách chi tiết, gồm: Mã phiếu,Tên độc giả,Tên sách,Ngày mượn,Ngày trả,Trạng thái (Đã trả / Đang mượn / Quá hạn)
+
+<img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/2e06c170-b164-4bbd-989b-71dfabbb131c" />
+
+Store Procedure này:
+
+Không dùng OUTPUT
+
+Trả về dữ liệu bằng SELECT
+
+Có sử dụng:
+
+JOIN 3 bảng:
+
+[PhieuMuon]
+
+[DocGia]
+
+[Sach]
+
+CASE để xử lý logic trạng thái
+
+Kết quả trả về là:
+
+ Một tập bản ghi (Result Set)
+
+### Phần 4: Trigger và Xử lý logic nghiệp vụ (Kiến thức 11)
+
+#Viết 01 Trigger để tự động làm gì đó tại 1 bảng B khi mà dữ liệu thay đổi dữ liệu ở bảng A. Logic giải quyết do sv tự nghĩ ra, sao cho thực tế và thuyết phục.
+
+Trường hợp hợp lệ
+
+<img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/8ab1c0a2-d049-4b9e-928e-f37e69fad24b" />
+
+Trường hợp hết sách
+
+<img width="1917" height="1080" alt="image" src="https://github.com/user-attachments/assets/ed2f01bb-733e-4ce3-8cd4-3110533f65a2" />
+
+Trigger này được tạo trên bảng [PhieuMuon]
+
+Chạy khi có lệnh INSERT (có người mượn sách)
+
+Sử dụng bảng tạm inserted để lấy dữ liệu vừa thêm
+
+Kiểm tra sách còn không
+
+Nếu hết → hủy giao dịch (ROLLBACK)
+
+Nếu còn → giảm số lượng sách
+
+#Thử viết Trigger cho Bảng A : Khi insert thì cập nhật dữ liệu vào bảng B; sau đó viết trigger cho bảng B để khi B được cập nhật thì cập nhật sang bảng A : Quan sát các thông báo (nếu có) của hệ thống, giải thích các thông báo đó (nếu có). Đưa ra nhật xét cuối cùng về tình trạng này.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f07b6c33-0daa-4c1e-9c54-acf38b483ee9" />
+
+Cursor dùng để:
+
+Duyệt từng dòng trong [PhieuMuon]
+
+Với mỗi dòng:
+
+Kiểm tra quá hạn
+
+Tính tiền phạt
+
+In ra kết quả
+
+### Phần 5: Cursor và Duyệt dữ liệu (Kiến thức 11)
+
+#Viết một đoạn script sử dụng CURSOR để duyệt qua danh sách của 1 câu lệnh SQL dạng SELECT, duyệt qua từng bản ghi, xử lý riêng từng bản ghi
+
+<img width="1920" height="1078" alt="image" src="https://github.com/user-attachments/assets/f910e165-49d7-4733-bee7-d79b8bf85f8b" />
+
+CURSOR được dùng để:
+
+Duyệt từng bản ghi trong bảng [PhieuMuon]
+
+Với mỗi dòng:
+
+Kiểm tra trạng thái mượn
+
+Tính toán tiền phạt nếu cần
+
+In kết quả riêng cho từng phiếu
+
+ #Tìm cách không sử dụng CURSOR để giải quyết bài toán mà em đã dùng CURSOR mới giải quyết được ở trên. thử so sánh tốc độ giữa có dùng cursor và không dùng cursor (nếu cùng kết quả) thì thời gian xử lý cái nào nhanh hơn, cần ảnh chụp màn hình minh chứng.
+
+Không sử dụng CURSOR
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/70c736fd-4800-494e-90b0-8a14f4e98143" />
+
+So sánh
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5853d869-fe91-4a5a-a260-8392ddeea2a1" />
+
+**Kết luận**
+
+Không dùng CURSOR:
+
+ Nhanh hơn rõ rệt
+ 
+ Tối ưu hơn
+ 
+ Nên dùng trong thực tế
+ 
+CURSOR:
+
+ Chậm do xử lý từng dòng
+ 
+ Chỉ dùng khi logic phức tạp không thể viết bằng SELECT
+
+#Nếu vẫn tìm được cách dùng SQL để giải quyết vấn đề mà ko cần CURSOR: thử nghĩ bài toán khác, mà chỉ CURSOR mới giải quyết được, còn SQL rất khó giải quyết đc (theo logic suy nghĩ của em)
+
+ Bài toán (chỉ CURSOR xử lý hợp lý)
+ Ý tưởng
+
+ Gửi cảnh báo cho từng độc giả nếu tổng tiền phạt vượt ngưỡng, đồng thời:
+
+Với mỗi độc giả:
+
+Tính tổng tiền phạt
+
+Nếu > 50,000 → “gửi thông báo riêng”
+
+Nội dung thông báo khác nhau theo từng người
+
+ Đây là dạng:
+
+Xử lý từng đối tượng riêng biệt
+
+Có thể mở rộng: gửi email, ghi log, gọi API.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4fc5d8d2-16eb-4d74-a35f-4ece701bcdaf" />
+
+không sử dụng cursor
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ae2f1bfc-ddde-4cf3-bd1b-d412a9a1334e" />
+
+Kết luận 
+
+SQL thuần:
+
+Phù hợp xử lý theo tập dữ liệu
+
+Nhanh và tối ưu
+
+CURSOR:
+
+Phù hợp khi cần xử lý từng dòng riêng biệt
+
+Thực hiện logic phức tạp theo từng đối tượng
