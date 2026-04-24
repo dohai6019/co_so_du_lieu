@@ -1,3 +1,4 @@
+# Đỗ Ngọc Hải k235480106019
 ## YÊU CẦU CHUNG CỦA BÀI TẬP 02
 
 1. **Nội dung:**
@@ -78,7 +79,7 @@
 
 ---------
 Phần mở đầu: Thông tin cá nhân, yêu cầu đầu bài, giới thiệu sơ qua về cách làm.
-Đỗ Ngọc Hải k235480106019, 
+, 
 Phần 1: Khởi tạo bảng
 
 [Mô tả logic]
