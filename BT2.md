@@ -108,6 +108,7 @@ NgayTra: có CHECK (không được nhỏ hơn ngày mượn)
 
 
 **Bảng Độc giả**
+
 MaDocGia: khóa chính (PK)
 
 Dùng NVARCHAR để hỗ trợ tiếng Việt
