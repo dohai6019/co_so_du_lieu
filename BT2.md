@@ -130,6 +130,20 @@ Date/Time functions: xử lý ngày giờ
 
 #Viết 01 Scalar Function (Hàm trả về một giá trị): Đưa ra 1 logic cho cơ sở dữ liệu của em, mà cần dùng đến function này. 
 
+**Bài toán**
+
+ Tính số ngày mượn sách thực tế
+
+Nếu chưa trả (NgayTra = NULL) thì tính đến ngày hiện tại
+
+Nếu đã trả → tính từ NgayMuon đến NgayTra
+
+ Ý nghĩa:
+
+Dùng để thống kê thời gian mượn
+
+Phục vụ tính tiền phạt, báo cáo,...
+
 Function tính số ngày mượn sách thực tế:
 
 Nếu chưa trả (NgayTra = NULL) → tính đến ngày hiện tại
@@ -141,17 +155,65 @@ Nếu đã trả → tính từ NgayMuon → NgayTra
 kết quả
 <img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/cdb7678e-879a-4055-ba5d-f8e30da047ae" />
 
+Đây là Scalar Function vì:
+
+ Trả về 1 giá trị duy nhất (INT)
+ 
+Có xử lý logic:
+
+Nếu chưa trả → dùng GETDATE()
+
+Nếu đã trả → dùng NgayTra
+
 #Viết 01 Inline Table-Valued Function: Trả về danh sách các bản ghi theo một điều kiện lọc cụ thể
 
-Lấy danh sách các phiếu mượn của một độc giả cụ thể:
+**Bài toán**
+
+ Lấy danh sách các phiếu mượn của một độc giả cụ thể
 
 Nhập vào: MaDocGia
 
 Trả về: danh sách các phiếu mượn của người đó
 
+ Ý nghĩa:
+
+Xem lịch sử mượn sách
+
+Phục vụ thống kê theo người
+
 <img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/3e57477f-3260-4c7a-a2df-a5aed1c21fdb" />
 
+Đây là Inline Table-Valued Function vì:
+
+Trả về bảng (TABLE)
+
+Không dùng BEGIN...END
+
+Chỉ chứa 1 câu SELECT
+
+Có tham số:
+
+@MaDocGia → giúp lọc dữ liệu linh hoạt
+
 #Viết 01 Multi-statement Table-Valued Function: Thực hiện xử lý logic phức tạp bên trong (có sử dụng biến bảng) trước khi trả về kết quả.
+
+**Bài toán**
+
+ Lấy danh sách phiếu mượn + phân loại trạng thái
+
+Phân loại:
+
+Đang mượn → chưa trả (NgayTra IS NULL)
+
+Đã trả → đã có ngày trả
+
+Quá hạn → mượn quá 7 ngày
+
+ Có thêm:
+
+Số ngày mượn
+
+Tiền phạt (5000đ/ngày nếu quá hạn)
 
 Lấy danh sách phiếu mượn + phân loại trạng thái
 
@@ -205,6 +267,20 @@ Muốn kiểm tra lại logic
 
 #Viết 01 Store Procedure đơn giản để thực hiện lệnh INSERT hoặc UPDATE dữ liệu, có kiểm tra điều kiện logic 
 
+**Bài toán**
+
+ Thêm sách mới vào bảng [Sach], nhưng:
+
+ Không được trùng MaSach
+ 
+ SoLuong phải ≥ 0
+ 
+ GiaTien phải > 0
+
+ Nếu sai thì báo lỗi
+ 
+ Nếu đúng thì cho phép INSERT
+
 Thêm sách "Mạng máy tính"
 
 <img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/17ef935f-1683-4f6d-92ae-9141b9d0e9ad" />
@@ -219,7 +295,21 @@ Danh sách đã được thêm
 
 #Viết 01 Store Procedure có sử dụng tham số OUTPUT để trả về một giá trị tính toán 
 
-Tính tổng tiền phạt của một độc giả:
+**Bài toán**
+
+Tính tổng tiền phạt của một độc giả.
+
+Input: @MaDocGia
+
+Output: @TongTienPhat
+
+Logic:
+
+Mỗi phiếu mượn:
+
+Quá 7 ngày thì phạt 5000đ/ngày
+
+Cộng tất cả lại
 
 <img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/3f7fd2a4-29a3-43ce-9136-e5d703a4f346" />
 
@@ -242,6 +332,8 @@ CASE
 DATEDIFF
 
 #Viết 01 Store Procedure trả về một tập kết quả (Result set) từ lệnh SELECT sau khi đã join nhiều bảng.
+
+**Bài toán**
 
 Hiển thị danh sách mượn sách chi tiết, gồm: Mã phiếu,Tên độc giả,Tên sách,Ngày mượn,Ngày trả,Trạng thái (Đã trả / Đang mượn / Quá hạn)
 
@@ -273,11 +365,22 @@ Kết quả trả về là:
 
 #Viết 01 Trigger để tự động làm gì đó tại 1 bảng B khi mà dữ liệu thay đổi dữ liệu ở bảng A. Logic giải quyết do sv tự nghĩ ra, sao cho thực tế và thuyết phục.
 
-Trường hợp hợp lệ
+**Bài toán**
+
+ Khi thêm dữ liệu vào bảng [PhieuMuon] (có người mượn sách)
+- hệ thống phải tự động giảm số lượng sách trong bảng [Sach]
+
+ Logic thực tế:
+
+Mỗi lần mượn 1 cuốn → số lượng giảm 1
+
+Nếu hết sách - không cho mượn
+
+**Trường hợp hợp lệ**
 
 <img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/8ab1c0a2-d049-4b9e-928e-f37e69fad24b" />
 
-Trường hợp hết sách
+**Trường hợp hết sách**
 
 <img width="1917" height="1080" alt="image" src="https://github.com/user-attachments/assets/ed2f01bb-733e-4ce3-8cd4-3110533f65a2" />
 
@@ -295,19 +398,21 @@ Nếu còn → giảm số lượng sách
 
 #Thử viết Trigger cho Bảng A : Khi insert thì cập nhật dữ liệu vào bảng B; sau đó viết trigger cho bảng B để khi B được cập nhật thì cập nhật sang bảng A : Quan sát các thông báo (nếu có) của hệ thống, giải thích các thông báo đó (nếu có). Đưa ra nhật xét cuối cùng về tình trạng này.
 
+**Bài toán**
+
+Bảng A: [DocGia]
+
+Bảng B: [Sach]
+
+Yêu cầu:
+
+Insert vào A → update B
+
+Update B → update lại A
+
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f07b6c33-0daa-4c1e-9c54-acf38b483ee9" />
 
-Cursor dùng để:
-
-Duyệt từng dòng trong [PhieuMuon]
-
-Với mỗi dòng:
-
-Kiểm tra quá hạn
-
-Tính tiền phạt
-
-In ra kết quả
+Trigger hai chiều giữa các bảng là thiết kế không an toàn vì có thể gây ra vòng lặp vô hạn. Trong trường hợp này không xảy ra lỗi do câu lệnh UPDATE không làm thay đổi dữ liệu, nhưng nếu thay đổi thực sự thì hệ thống sẽ báo lỗi do vượt quá mức lồng trigger.
 
 ### Phần 5: Cursor và Duyệt dữ liệu (Kiến thức 11)
 
@@ -393,3 +498,5 @@ CURSOR:
 Phù hợp khi cần xử lý từng dòng riêng biệt
 
 Thực hiện logic phức tạp theo từng đối tượng
+
+Mặc dù nhiều bài toán có thể thay thế CURSOR bằng SQL thuần, nhưng trong các trường hợp cần xử lý riêng từng bản ghi với logic khác nhau hoặc tương tác bên ngoài, CURSOR là công cụ cần thiết và phù hợp hơn.
