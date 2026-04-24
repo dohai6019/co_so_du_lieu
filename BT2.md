@@ -78,24 +78,42 @@
   + Nếu vẫn tìm được cách dùng SQL để giải quyết vấn đề mà ko cần CURSOR: thử nghĩ bài toán khác, mà chỉ CURSOR mới giải quyết được, còn SQL rất khó giải quyết đc (theo logic suy nghĩ của em)
 
 ---------
-Phần mở đầu: Thông tin cá nhân, yêu cầu đầu bài, giới thiệu sơ qua về cách làm.
-, 
-Phần 1: Khởi tạo bảng
+### Phần 1: Thiết kế và Khởi tạo Cấu trúc Dữ liệu (Kiến thức 6, 7) 
+Tạo một Database mới với tên  [QuanLyThuVien_K235480106019]. 
+Tạo các bảng:
 
-[Mô tả logic]
 
-[Code SQL]
+**Bảng Sách**
 
-![Ảnh chụp màn hình kết quả]
+MaSach: PK
 
-Chú thích: Ảnh này cho thấy tôi đã tạo thành công 3 bảng với các kiểu dữ liệu đúng yêu cầu...
+GiaTien: kiểu số thực (DECIMAL)
 
-Phần 2: ... (Tương tự cho các câu tiếp theo, mỗi phần có thể có nhiều ảnh, mỗi ảnh hãy gõ thêm chú thích)
+SoLuong: có ràng buộc CHECK (không âm)
 
-...
+<img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/83c44540-6696-4b09-b95f-2d28985a3e9b" />
 
-Lưu ý: Mọi hành vi sao chép code hoặc ảnh chụp của người khác sẽ bị phát hiện tự động và nhận điểm 0 (cấm thi) theo quy định của môn học.
 
-code sql lưu vết các demo trên lớp được gửi kèm trong repo này, readme.md chứa bài tập 1 được đổi tên thành bai_tap_01.md để lưu trữ, readme được tạo mới với nội dung bài tập 2. 
+**Bảng Phiếu Mượn**
 
-sv làm bài xong cập nhật link repo (public access able) vào file sau: https://docs.google.com/spreadsheets/d/1iwHJ6qSFKkS3iUjtlbCxw_0jUWC56PnCso1kcgxOEas/edit?usp=sharing  (nhớ dùng tài khoản @tnut)
+MaPhieu: PK
+
+MaDocGia: FK → bảng [DocGia]
+
+MaSach: FK → bảng [Sach]
+
+NgayTra: có CHECK (không được nhỏ hơn ngày mượn)
+
+<img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/40cf6fcf-a3f0-41cf-9238-2b76b4afa7f1" />
+
+
+**Bảng Độc giả**
+MaDocGia: khóa chính (PK)
+
+Dùng NVARCHAR để hỗ trợ tiếng Việt
+
+DATE cho ngày sinh
+
+<img width="1920" height="1030" alt="image" src="https://github.com/user-attachments/assets/30e82b01-ec8b-4d97-a28c-d7063198c106" />
+
+
